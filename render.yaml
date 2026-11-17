@@ -1,12 +1,10 @@
-# Deploy kwant to Render: https://render.com/deploy?repo=https://github.com/alexsergivan/kwant
+# Deploy Jinal Bots to Render: https://render.com/deploy?repo=https://github.com/jash1509/jinal-bot
 # Render keeps files only on a persistent disk, and disks need a paid instance (Starter or up),
 # so this Blueprint asks for one. The sign-in token is made by Render: open the service's
-# Environment page and copy KWNT_API_TOKEN.
-# docker/render.Dockerfile is the released image plus a start step that hands the disk to kwnt
-# (a fresh disk may belong to root); Render builds it in seconds, nothing is compiled.
+# Environment page and copy JINAL_BOT_API_TOKEN.
 services:
   - type: web
-    name: kwnt
+    name: jinal-bot
     runtime: docker
     dockerfilePath: ./docker/render.Dockerfile
     dockerContext: ./docker
@@ -18,8 +16,8 @@ services:
       - key: KWNT_API_TOKEN
         generateValue: true
       - key: KWNT_SIGNIN_HINT
-        value: "Use the token Render made for kwnt: open this service's Environment page on Render and copy KWNT_API_TOKEN."
+        value: "Use the token Render generated: open this service's Environment page on Render and copy KWNT_API_TOKEN."
     disk:
-      name: kwnt-data
+      name: jinal-bot-data
       mountPath: /data
       sizeGB: 1
