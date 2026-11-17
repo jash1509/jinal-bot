@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Check, ChevronRight, Copy, KeyRound, Loader2, RefreshCw, Terminal, X } from 'lucide-react';
-import { ModernAvatar } from './ModernAvatar';
 import { DeviceRequestPrompt, DeviceWait } from './DeviceSignIn';
 import {
   PERSON_PROMPT_CLOSED_EVENT,
@@ -31,9 +30,9 @@ installUnauthorizedListener();
 
 /** What the start screen says when the server didn't answer. */
 export function offlineMessage(e: unknown, online: boolean): string {
-  if (!online) return "You're offline. kwant bots opens once your phone is connected again.";
+  if (!online) return "You're offline. Jinal Bots opens once your phone is connected again.";
   if (e instanceof Error && e.message !== 'Failed to fetch' && e.message !== 'Load failed') return e.message;
-  return "Can't reach the kwant bots server. Check that it's running and that this device can reach it.";
+  return "Can't reach the Jinal Bots server. Check that it's running and that this device can reach it.";
 }
 
 let zoneFilled = false;
@@ -142,9 +141,9 @@ export const AuthGate: React.FC<{ children: React.ReactNode }> = ({ children }) 
     <div className="min-h-[100dvh] w-screen flex items-center justify-center bg-zinc-950 text-zinc-100 p-4 pt-[max(1rem,env(safe-area-inset-top))] pb-[max(1rem,env(safe-area-inset-bottom))] font-sans">
       <div className="w-full max-w-md bg-zinc-900 border border-zinc-800 rounded-2xl p-6 shadow-2xl space-y-5">
         <div className="flex items-center gap-3">
-          <ModernAvatar role="brand" name="kwant bots" size={36} />
+          <img src="/icon.svg" alt="" width={36} height={36} />
           <div>
-            <h1 className="text-sm font-semibold">kwant bots</h1>
+            <h1 className="text-sm font-semibold">Jinal Bots</h1>
             <p className="text-xs text-zinc-400">Your team of AI bots</p>
           </div>
         </div>
@@ -300,10 +299,10 @@ export const OtherSetups: React.FC<{
       </summary>
       <div className="mt-2 space-y-2.5 leading-relaxed">
         {children}
-        <p className="text-[11px] text-zinc-500 leading-snug">Get the access token on the machine running kwant bots:</p>
-        <Setup label={docker ? 'Docker, in the folder with docker-compose.yml' : 'As the user that runs kwant bots'}>{docker ? DOCKER_COMMAND : FILE_COMMAND}</Setup>
+        <p className="text-[11px] text-zinc-500 leading-snug">Get the access token on the machine running Jinal Bots:</p>
+        <Setup label={docker ? 'Docker, in the folder with docker-compose.yml' : 'As the user that runs Jinal Bots'}>{docker ? DOCKER_COMMAND : FILE_COMMAND}</Setup>
         {docker ? (
-          <Setup label="Without Docker, as the user that runs kwant bots">{FILE_COMMAND}</Setup>
+          <Setup label="Without Docker, as the user that runs Jinal Bots">{FILE_COMMAND}</Setup>
         ) : (
           <Setup label="Docker, in the folder with docker-compose.yml">{DOCKER_COMMAND}</Setup>
         )}
@@ -331,7 +330,7 @@ export const selectForRetry = (el: Pick<HTMLInputElement, 'focus' | 'select'> | 
   el.select();
 };
 
-export const WRONG_TOKEN = "That token isn't right. It has to come from the machine running kwant bots, as the user running it.";
+export const WRONG_TOKEN = "That token isn't right. It has to come from the machine running Jinal Bots, as the user running it.";
 /** Only shown with the wrong-token error, not up front. */
 export const OWN_TOKEN_HINT = "Each install has its own token, so one copied from another computer won't work here.";
 /** With a store hint the person has no shell, so the wrong-token error points back to the hint instead. */
@@ -430,8 +429,8 @@ export const TokenForm: React.FC<{
       {deviceLogin && <DeviceWait onSignedIn={onSignedIn} />}
       <div className="space-y-1.5">
         <p className="text-xs text-zinc-400 leading-relaxed">
-          {open} the one-time sign-in link kwant bots printed when it started, or scan its QR code with your phone. Used or lost
-          it? Make a new one on the machine running kwant bots:
+          {open} the one-time sign-in link Jinal Bots printed when it started, or scan its QR code with your phone. Used or lost
+          it? Make a new one on the machine running Jinal Bots:
         </p>
         <Command>{docker ? DOCKER_LINK_COMMAND : LINK_COMMAND}</Command>
       </div>

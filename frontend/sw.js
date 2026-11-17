@@ -1,4 +1,4 @@
-// kwant bots service worker: keeps the app shell (index.html, the built JS/CSS, icons) on the
+// Jinal Bots service worker: keeps the app shell (index.html, the built JS/CSS, icons) on the
 // device so the installed app opens fast and shows "can't reach the server" instead of a blank
 // page when the server is down. It never stores anything else: the API, the event stream, the
 // browser stream, uploads and other sites always go straight to the network, untouched.
@@ -99,7 +99,7 @@ self.addEventListener('push', (event) => {
   } catch {
     p = {};
   }
-  const title = typeof p.title === 'string' && p.title ? p.title : 'kwant';
+  const title = typeof p.title === 'string' && p.title ? p.title : 'Jinal Bots';
   const data = {
     path: notificationPath(p),
     kind: p.kind || null,

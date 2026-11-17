@@ -1,4 +1,4 @@
-// Wording (Spaces IA §5): visible text says "kwant bots" in headings and "bot" in sentences,
+// Wording (Spaces IA §5): visible text says "Jinal Bots" in headings and "bot" in sentences,
 // never a bare "kwant", "kwnt" or "agent". Scans string literals and JSX text in src/ with the
 // TypeScript parser; comments, imports, ids, keys and other single lowercase words are skipped.
 import assert from 'node:assert/strict';
@@ -21,7 +21,7 @@ const BAD = /\b(kwants?|kwnt|agents?)\b/i;
 // Agent Maestro, the VS Code extension's own name (a Custom API preset), and "coding agent", what
 // Claude Code, Codex and Cursor are called in Settings → Coding agents (0.7.4).
 // 0.9.8 first screen (Mira, first-screen F): the product's own name in the welcome and the claude.ai step.
-const ALLOWED = /\bWelcome to kwant\b|\ballow kwant\.|\bkwant bots?\b|\bcoding agents?\b|\b(?:exec kwnt )?kwnt (?:token|signin-link)\b|~\/\.kwnt\/api-token/gi;
+const ALLOWED = /\bWelcome to kwant\b|\ballow kwant\.|\bJinal Bots\b|\bkwant bots?\b|\bcoding agents?\b|\b(?:exec kwnt )?kwnt (?:token|signin-link)\b|~\/\.kwnt\/api-token/gi;
 const MAESTRO = /\bAgent Maestro\b|\bHermes Agent\b/g;
 // T/D preview sheet (0.7.7): Mira's review-396-397 must-fix 7 and Ada's deviation-4 ruling keep "kwant"
 // as the subject in these three sentences only.
@@ -88,10 +88,10 @@ test('no visible text says a bare "kwant", "kwnt" or "agent"', () => {
   assert.deepEqual(findBareWording(), []);
 });
 
-test('the page title says "kwant bots"', () => {
+test('the page title says "Jinal Bots"', () => {
   const title = readFileSync(join(root, 'index.html'), 'utf8').match(/<title>([^<]*)<\/title>/)?.[1] ?? '';
-  assert.match(title, /kwant bots/);
-  assert.doesNotMatch(title.replace(/\bkwant bots?\b/gi, ''), BAD);
+  assert.match(title, /Jinal Bots/);
+  assert.doesNotMatch(title.replace(/\bJinal Bots?\b/gi, ''), BAD);
 });
 
 if (process.argv.includes('--list')) console.log(findBareWording().join('\n'));

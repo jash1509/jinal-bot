@@ -107,7 +107,7 @@ export function viewAfterSpaceSwitch(view: SpaceView | null | undefined): SpaceV
 
 const PHONE_TIP_KEY = 'kwnt.phoneTip.dismissed';
 
-/** The desktop sidebar's one-time "Tip: use kwant bots on your phone" shows until it is dismissed
+/** The desktop sidebar's one-time "Tip: use Jinal Bots on your phone" shows until it is dismissed
  *  or clicked. A new key on purpose: people who dismissed the old install tip see this once. */
 export function phoneTipDismissed(): boolean {
   try {

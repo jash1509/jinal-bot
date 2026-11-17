@@ -1,4 +1,4 @@
-// Settings → Coding agents (0.7.4): connections that let Claude Code, Codex or Cursor ask kwant bots for
+// Settings → Coding agents (0.7.4): connections that let Claude Code, Codex or Cursor ask Jinal Bots for
 // work. The `kag_` token comes back from create only; the server keeps its hash. It lives in the card's
 // state while the "copy it now" view is open and nowhere else: not in a list, URL, log or storage.
 

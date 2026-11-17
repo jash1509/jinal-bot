@@ -112,7 +112,7 @@ test('ready engines come first; not-installed CLIs and Ollama fold under "Not av
 
 test('the headline gives way to the route summary once something is ready', () => {
   // With something ready, the route summary answers "what runs" instead of a count.
-  assert.match(panel(live), /What runs your kwant bots/);
+  assert.match(panel(live), /What runs your Jinal Bots/);
   assert.doesNotMatch(panel(live), /no API keys are needed/);
   assert.match(panel(live.map((e) => ({ ...e, status: 'signed_out' }))), /Nothing can answer yet/);
   assert.match(panel(live.map((e) => ({ ...e, status: 'signed_out', enabled: e.id !== 'codex' }))), /No engine can run right now/);

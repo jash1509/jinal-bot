@@ -8,7 +8,7 @@ type Notice = { message_id: string; read_at: string | null };
 type Conversation = { id: string; participant_a: string; participant_b: string };
 
 function SignIn({ client }: { client: SupabaseClient }) {
-  const [mode, setMode] = useState<'sign-in' | 'register' | 'reset'>('sign-in');
+  const [mode, setMode] = useState<'sign-in' | 'reset'>('sign-in');
   const [status, setStatus] = useState('');
   const [busy, setBusy] = useState(false);
 
@@ -24,11 +24,8 @@ function SignIn({ client }: { client: SupabaseClient }) {
         setStatus(error?.message ?? 'If this email has an account, check your inbox for a reset link.');
         return;
       }
-      const { data, error } = mode === 'register'
-        ? await client.auth.signUp({ ...credentials, options: { emailRedirectTo: window.location.origin + window.location.pathname } })
-        : await client.auth.signInWithPassword(credentials);
+      const { error } = await client.auth.signInWithPassword(credentials);
       if (error) setStatus(error.message);
-      else if (mode === 'register' && !data.session) setStatus('Check your email to confirm your account.');
     } catch {
       setStatus('Could not reach the sign-in service. Try again.');
     } finally {
@@ -36,17 +33,17 @@ function SignIn({ client }: { client: SupabaseClient }) {
     }
   }
 
-  const action = { 'sign-in': 'Sign in', register: 'Create an account', reset: 'Reset password' }[mode];
+  const action = mode === 'sign-in' ? 'Sign in' : 'Reset password';
   function switchMode(next: typeof mode) { setMode(next); setStatus(''); }
   return <section>
     <h2>{action}</h2>
+    {mode === 'sign-in' && <p>Access is by invitation. Ask the owner for an invite.</p>}
     <form onSubmit={submit}>
       <label>Email <input name="email" type="email" autoComplete="email" required /></label>
-      {mode !== 'reset' && <label>Password <input name="password" type="password" autoComplete={mode === 'register' ? 'new-password' : 'current-password'} required /></label>}
+      {mode !== 'reset' && <label>Password <input name="password" type="password" autoComplete="current-password" required /></label>}
       <button disabled={busy}>{action}</button>
     </form>
     {mode === 'sign-in' ? <p>
-      <button type="button" disabled={busy} onClick={() => switchMode('register')}>Create an account</button>{' '}
       <button type="button" disabled={busy} onClick={() => switchMode('reset')}>Forgot password</button>
     </p> : <button type="button" disabled={busy} onClick={() => switchMode('sign-in')}>Back to sign in</button>}
     <p role="status">{status}</p>
@@ -170,13 +167,18 @@ function Messages({ client, session }: { client: SupabaseClient; session: Sessio
   </>;
 }
 
-function App({ client }: { client: SupabaseClient }) {
+function App({ client, inviteToken }: { client: SupabaseClient; inviteToken: string | null }) {
   const [session, setSession] = useState<Session | null | undefined>();
   const [recovering, setRecovering] = useState(false);
   const [resetStatus, setResetStatus] = useState('');
   const [savingPassword, setSavingPassword] = useState(false);
+  const pendingInvite = useRef(inviteToken);
   useEffect(() => {
     const { data: { subscription } } = client.auth.onAuthStateChange((event, next) => {
+      if (pendingInvite.current && next?.access_token === pendingInvite.current) {
+        pendingInvite.current = null;
+        setRecovering(true);
+      }
       if (event === 'PASSWORD_RECOVERY') setRecovering(true);
       setSession(next);
     });
@@ -209,7 +211,9 @@ function App({ client }: { client: SupabaseClient }) {
 
 const url = import.meta.env.VITE_SUPABASE_URL;
 const key = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
+const callback = new URLSearchParams(window.location.hash.slice(1));
+const inviteToken = callback.get('type') === 'invite' ? callback.get('access_token') : null;
 createRoot(document.getElementById('root')!).render(<main>
   <h1>Jinal Bots Messages</h1>
-  {url && key ? <App client={createClient(url, key)} /> : <p>Set VITE_SUPABASE_URL and VITE_SUPABASE_PUBLISHABLE_KEY to enable messages.</p>}
+  {url && key ? <App client={createClient(url, key)} inviteToken={inviteToken} /> : <p>Set VITE_SUPABASE_URL and VITE_SUPABASE_PUBLISHABLE_KEY to enable messages.</p>}
 </main>);

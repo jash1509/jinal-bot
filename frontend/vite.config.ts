@@ -87,7 +87,7 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        main: fileURLToPath(new URL('./index.html', import.meta.url)),
+        index: fileURLToPath(new URL('./index.html', import.meta.url)),
         messages: fileURLToPath(new URL('./messages.html', import.meta.url)),
       },
     },

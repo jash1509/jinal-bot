@@ -183,7 +183,7 @@ function headline(engines: EngineInfo[], profiles: Profile[] | null, now: number
 export const RouteSummary: React.FC<{ rows: RouteRow[]; pending: boolean }> = ({ rows, pending }) => (
   <div data-route-summary className="rounded-xl border border-sky-500/25 bg-gradient-to-b from-sky-500/[0.07] to-transparent p-3 space-y-2.5">
     <h4 className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide text-sky-200">
-      <Route size={13} aria-hidden="true" /> What runs your kwant bots
+      <Route size={13} aria-hidden="true" /> What runs your Jinal Bots
     </h4>
     <ul className="space-y-2.5">
       {rows.map((r) => (
@@ -219,7 +219,7 @@ export const EnginesPanel: React.FC<{
   accounts?: ProfilesState;
   now?: number;
   focusClaudeSignIn?: number;
-  /** Apps & accounts: the AI accounts list above already says what runs the bots, so skip "What runs your kwant bots". */
+  /** Apps & accounts: the AI accounts list above already says what runs the bots, so skip "What runs your Jinal Bots". */
   hideRoutes?: boolean;
 }> = ({ api, accounts, now = Date.now(), focusClaudeSignIn, hideRoutes = false }) => {
   const { engines, error, rechecking, recheck, setEnabled, reload } = api;

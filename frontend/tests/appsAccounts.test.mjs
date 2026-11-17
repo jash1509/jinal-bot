@@ -270,7 +270,7 @@ test('a server that is already on is not saved again, and no pick only takes it 
 test('giving fails with the server’s own words', async () => {
   const f = async () => ({ ok: false, status: 500, json: async () => ({ error: 'Database is locked' }) });
   await assert.rejects(m.giveServerTo('cmp1', ['k1'], ['k1'], f), /Database is locked/);
-  await assert.rejects(m.giveServerTo('cmp1', ['k1'], ['k1'], async () => { throw new TypeError('fetch failed'); }), /Couldn’t reach kwant/);
+  await assert.rejects(m.giveServerTo('cmp1', ['k1'], ['k1'], async () => { throw new TypeError('fetch failed'); }), /Couldn’t reach Jinal Bots/);
 });
 
 // ── AI accounts and the needs-you count ──────────────────────────────────────────────────────
@@ -432,7 +432,7 @@ test('F5: the key error sits right under the field and is read with it; an added
   assert.equal(host.querySelector('[data-sheet-step="1"]').getAttribute('data-done'), 'true');
 });
 
-test('Sign-ins and settings has no account list of its own: no "What runs your kwant bots" there', () => {
+test('Sign-ins and settings has no account list of its own: no "What runs your Jinal Bots" there', () => {
   const { EnginesPanel } = m;
   const engines = [{ id: 'claude', name: 'Claude Code CLI', kind: 'cli', status: 'ready', enabled: true, ready: true, models: [], checked_at: null, uses: { profile_id: 'sys', label: 'This machine' } }];
   const api = { engines, error: null, rechecking: false, recheck: async () => {}, setEnabled: async () => {}, reload: async () => {} };

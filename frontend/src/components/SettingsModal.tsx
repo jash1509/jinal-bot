@@ -38,7 +38,6 @@ import { ClaudeIsolationRow } from './ClaudeIsolationRow';
 import { LayaStatusRow } from './LayaStatus';
 import { useAppUpdate } from './AppUpdateBanner';
 import { VersionCard } from './VersionCard';
-import { StarAskSettingsLink } from './StarAsk';
 import { ProactiveSettings, WORK_AHEAD_CAP_MAX, WORK_AHEAD_CAP_MIN, parseProactiveSettings } from '../decideFirst';
 import { IDEA_CAP_DEFAULT, IDEA_CAP_MAX, IDEA_CAP_MIN, ideaCapForSwitch, lastIdeaCap, parseIdeaCap, rememberIdeaCap } from '../ideaShell';
 import {
@@ -673,7 +672,6 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose, t
         </div>
 
         <VersionCard />
-        <StarAskSettingsLink />
         <PerchSettingsCard />
 
         {computer.state.settings && (

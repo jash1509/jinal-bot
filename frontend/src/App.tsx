@@ -28,7 +28,6 @@ import { ApprovalsOffBadge } from './components/ApprovalsSetting';
 import { APPROVALS_CHANGED_EVENT, approvalsOff } from './approvalMode';
 import { QuestionCard } from './components/QuestionCard';
 import { HumanStepCard } from './components/HumanStepCard';
-import { StarAsk } from './components/StarAsk';
 import { starAskStore } from './starAsk';
 import { LiveActivity, appendThinking, applyActivity, parseStep, seedActivity } from './activity';
 import { liveNamingOrder, namesToFill } from './workingStrip';
@@ -3487,7 +3486,7 @@ export const SpaceApp: React.FC<SpaceAppProps> = ({
 
   const isGeneral = isChannel && !currentTeam && currentChannel?.name === 'general';
   const chatSubtitle = !isChannel
-    ? currentKwant?.title || 'Kwant bot'
+    ? currentKwant?.title || 'Bot'
     : isGeneral
       ? `The best fit of your ${kwants.length} ${kwants.length === 1 ? 'bot' : 'bots'} answers`
       : currentTeam?.description || currentChannel?.description || `A team in ${space.name}`;
@@ -5080,7 +5079,6 @@ export const SpaceApp: React.FC<SpaceAppProps> = ({
         </Suspense>
       )}
 
-      <StarAsk needsYou={Object.keys(needsYouByKwant).length > 0} waiting={awaitingTurns.size > 0 || pendingApprovals.length > 0} />
       <Toasts toasts={toasts} onDismiss={dismissToast} />
       <JiraSetupHost onSaved={() => pushToast('Taking tickets from Jira', 'Tickets you hand over show up on the Dev desk.')} />
       <HomeAssistantHost

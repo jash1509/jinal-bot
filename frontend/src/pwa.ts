@@ -1,4 +1,4 @@
-// Installing kwant bots: the service worker, the install hint and button, and the app height.
+// Installing Jinal Bots: the service worker, the install hint and button, and the app height.
 
 /** Registers /sw.js (built by vite.config.ts). Only in a build, and only where browsers allow
  * one: HTTPS or localhost. Plain http on a home network still works, just not installed. */
@@ -44,7 +44,7 @@ export function isLoopbackHost(hostname: string): boolean {
   );
 }
 
-/** What "Use kwant bots on your phone" offers on a computer: a one-time sign-in QR (`signin`), a QR of
+/** What "Use Jinal Bots on your phone" offers on a computer: a one-time sign-in QR (`signin`), a QR of
  *  this address (`address`), why a phone can't reach this computer (`loopback`), or why a phone
  *  can't install from plain http (`insecure`). Loopback is checked first: http://127.0.0.1 is not
  *  "insecure", it's unreachable. */
@@ -65,7 +65,7 @@ export type InstallHintKind = 'prompt' | 'ios' | null;
 
 /** Which install hint to show: the browser's own install button (Android, Chrome), the Share
  * steps (iOS), or none: already installed, dismissed, not a phone, not served over HTTPS, or the
- * "Use kwant bots on your phone" card is on screen and already shows the same steps. */
+ * "Use Jinal Bots on your phone" card is on screen and already shows the same steps. */
 export function installHintKind(s: {
   standalone: boolean;
   dismissed: boolean;

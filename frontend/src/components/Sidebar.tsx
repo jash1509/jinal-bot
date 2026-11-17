@@ -106,7 +106,7 @@ export interface SidebarProps {
   onSwitchSpace: (id: string) => void;
   onCreateSpace: () => void;
   onOpenSpaceSettings: () => void;
-  /** The phone tip: Settings › All spaces, at "Use kwant bots on your phone". */
+  /** The phone tip: Settings › All spaces, at "Use Jinal Bots on your phone". */
   onOpenPhoneApp?: () => void;
   onOpenArchived: () => void;
   onOpenSearch: () => void;
@@ -1178,7 +1178,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
         </div>
         )}
 
-        {/* Desktop: a one-time tip; Settings › All spaces keeps "Use kwant bots on your phone" for later */}
+        {/* Desktop: a one-time tip; Settings › All spaces keeps "Use Jinal Bots on your phone" for later */}
         {section === 'all' && onOpenPhoneApp && <PhoneAppTip className={navRow(false)} onOpen={onOpenPhoneApp} />}
       </div>
 
