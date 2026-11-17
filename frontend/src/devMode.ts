@@ -949,7 +949,7 @@ export const DEV_FEATURES = [
   { key: 'floor', n: '03', title: 'Production floor.', line: 'Pushes to main, deploys and deleting data always wait for your OK, even with approvals off.' },
 ] as const;
 
-export const DEV_GUIDE_URL = 'https://kwant.si/docs/dev-mode.html';
+export const DEV_GUIDE_URL = 'https://github.com/jash1509/jinal-bot#readme';
 
 /** Explainer spec §4, final copy. The kicker is upper-cased by CSS, so screen readers read words. */
 export const EXPLAINER = {

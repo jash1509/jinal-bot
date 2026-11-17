@@ -56,7 +56,7 @@ export function phoneAppKind(s: { hostname: string; protocol: string; authRequir
   return s.authRequired && s.deviceLogin ? 'signin' : 'address';
 }
 
-/** The kwant.si how-to the card links to, and the https proxy section. */
+/** The guide links the card points to */
 export const PHONE_GUIDE_URL = 'https://kwant.si/docs/phone.html';
 export const TELEGRAM_GUIDE_URL = 'https://kwant.si/docs/telegram.html';
 export const HTTPS_GUIDE_URL = 'https://kwant.si/docs/install.html#proxy';
@@ -110,8 +110,8 @@ export function subscribePhoneCard(fn: () => void): () => void {
   };
 }
 
-/** The Mac app's .dmg in the newest release (published by the mac workflow on a mac-v* tag). */
-export const MAC_DOWNLOAD_URL = 'https://github.com/alexsergivan/kwant/releases/latest/download/kwant_universal.dmg';
+/** The Mac app's .dmg in the newest release for Jinal Bots */
+export const MAC_DOWNLOAD_URL = 'https://github.com/jash1509/jinal-bot/releases/latest/download/jinal_bots_universal.dmg';
 
 /** Safari on a Mac, where installing is File, then Add to Dock. Not iPad, not Chrome or Firefox. */
 export function isMacSafari(nav: Pick<Navigator, 'userAgent' | 'maxTouchPoints'>): boolean {
