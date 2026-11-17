@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react';
 import { createHash } from 'node:crypto';
 import { readFileSync, readdirSync } from 'node:fs';
 import { join, relative } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { changelogSection } from './src/whatsNewSheet';
 
 const files = (dir: string): string[] =>
@@ -84,6 +85,12 @@ export default defineConfig({
     },
   },
   build: {
+    rollupOptions: {
+      input: {
+        main: fileURLToPath(new URL('./index.html', import.meta.url)),
+        messages: fileURLToPath(new URL('./messages.html', import.meta.url)),
+      },
+    },
     outDir: 'dist',
     emptyOutDir: true,
   },

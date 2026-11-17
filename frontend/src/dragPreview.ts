@@ -372,8 +372,8 @@ type Win = Pick<Window, 'addEventListener' | 'removeEventListener' | 'setTimeout
 export function createDragWatch(win: Win, watchdogMs = 1500) {
   let state: WindowDrag = { active: false, items: [], chats: 0 };
   let depth = 0;
-  let timer: ReturnType<typeof setTimeout> | null = null;
-  let dropTimer: ReturnType<typeof setTimeout> | null = null;
+  let timer: ReturnType<Window['setTimeout']> | null = null;
+  let dropTimer: ReturnType<Window['setTimeout']> | null = null;
   // A dragenter came in this task: a null-relatedTarget dragleave right after it is a crossing, not an exit.
   let justEntered = false;
   const subs = new Set<() => void>();

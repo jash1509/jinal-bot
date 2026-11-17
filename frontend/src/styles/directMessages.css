@@ -1,0 +1,13 @@
+:root { color-scheme: dark; font: 16px/1.5 system-ui, sans-serif; background: #111827; color: #f3f4f6; }
+main { max-width: 42rem; margin: 2rem auto; padding: 0 1rem; }
+section { background: #1f2937; border-radius: 0.75rem; margin: 1rem 0; padding: 1rem; }
+h2 { margin-top: 0; }
+form, label { display: grid; gap: 0.5rem; }
+input, textarea, button { font: inherit; color: inherit; border: 1px solid #64748b; border-radius: 0.4rem; padding: 0.5rem; }
+input, textarea { background: #111827; }
+button { background: #334155; cursor: pointer; overflow-wrap: anywhere; }
+button:disabled { opacity: 0.65; cursor: default; }
+ul { padding-left: 0; list-style: none; }
+li { border-bottom: 1px solid #475569; padding: 0.5rem 0; }
+li p { white-space: pre-wrap; overflow-wrap: anywhere; }
+code { overflow-wrap: anywhere; }
